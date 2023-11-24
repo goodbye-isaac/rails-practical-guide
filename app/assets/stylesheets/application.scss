@@ -1,1 +1,14 @@
 @import "bootstrap";
+
+.container {
+	margin-top: 20px;
+}
+
+.navbar-brand > a {
+	color: #212529;
+	text-decoration: none;
+}
+
+.navbar-brand > a:hover {
+	color: grey;
+}
