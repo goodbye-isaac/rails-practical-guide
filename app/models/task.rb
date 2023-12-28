@@ -4,8 +4,16 @@ class Task < ApplicationRecord
 
 	belongs_to :user
 
+	# ransackの検索可能なカラム指定
+	def self.ransackable_attributes(auth_object = nil)
+		%w[name created_at]
+	end
+	def self.ransackable_associations(auth_object = nil)
+		[]
+	end
+
 	private
 	def validate_name_not_including_comma
 		self.errors.add(:name,'にカンマを含めることはできません') if name&.include?(',')
 	end
-end
+end 
