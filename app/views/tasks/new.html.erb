@@ -4,6 +4,10 @@
 	<%= link_to '一覧', tasks_path, class: 'nav-link'%>
 </div>
 
+<%# formパーシャルにすでにあるためコメントアウト %>
+<%
+=begin 
+%>
 <% if @task.errors.present?%>
 	<ul id="error_explanation">
 		<% @task.errors.full_messages.each do |message|%>
@@ -11,7 +15,18 @@
 		<% end %>
 	</ul>
 <% end %>
+<%
+=end
+%>
 
+<%= render partial: 'form', locals: {task: @task} %>
+
+
+
+<%# 以下のコメントアウトはタスク登録の際に確認画面へ遷移するもの、activestorage実装に伴って共存が難しくなるのでコメントアウト %>
+<% 
+=begin
+%>
 <%= form_with model: @task, local: true, url: confirm_new_task_path do |f| %>
 	<div class="form-group">
 		<%= f.label :name%>
@@ -23,3 +38,6 @@
 	</div>
 	<%= f.submit '確認', class: 'btn btn-primary'%>
 <% end %>
+<%
+=end
+%>
